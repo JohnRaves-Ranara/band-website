@@ -7,19 +7,27 @@ const albums = [
       {
         name: "Between Days",
         duration: "3:10",
-        test: () => console.log("bruh"),
+        songLink: "assets/albums/BetweenDays-Album/Between-Days.mp3"
       },
       {
         name: "Blue",
         duration: "3:25",
+        songLink: "assets/albums/BetweenDays-Album/Blue.mp3"
       },
       {
         name: "The Place",
         duration: "4:17",
+        songLink: "assets/albums/BetweenDays-Album/The-Place.mp3"
       },
       {
         name: "Lets Go Outside",
         duration: "4:30",
+        songLink: "assets/albums/BetweenDays-Album/Lets-Go-Outside.mp3"
+      },
+      {
+        name: "Finding My Way Home",
+        duration: "4:30",
+        songLink: "assets/albums/BetweenDays-Album/Finding-My-Way-Home.mp3"
       },
     ],
   },
@@ -31,54 +39,123 @@ const albums = [
       {
         name: "Conversations",
         duration: "3:19",
+        songLink: "assets/albums/TheHeights-Album/Conversations.mp3"
       },
       {
         name: "Astoria",
         duration: "4:06",
+        songLink: "assets/albums/TheHeights-Album/Astoria.mp3"
       },
       {
         name: "A Dream of You",
         duration: "4:18",
+        songLink: "assets/albums/TheHeights-Album/A-Dream-of-You.mp3"
       },
       {
         name: "These Times",
         duration: "3:11",
+        songLink: "assets/albums/TheHeights-Album/These-Times.mp3"
       },
       {
         name: "The Heights",
         duration: "3:14",
+        songLink: "assets/albums/TheHeights-Album/The-Heights.mp3"
       },
     ],
   },
 ];
 
-let lastPlayedButton = '';
+let lastPlayedButton = null;
+let lastPlayedAudio = null
 
 function togglePlayPause(button, name, duration) {
+  let progressBar = document.createElement("div")
+  let progressRange = document.createElement("input")
+  let songContainerRef = button.closest(".song-container")
+  let currentPlayingAudio = songContainerRef.querySelector("audio")
+  let albumContainer = button.closest(".album-container")
+  let coverContainer = albumContainer.previousElementSibling
+  let vinyl = coverContainer.querySelector(".vinyl")
+  //THIS CHECKS FOR EXISTING PROGRESSBAR AND REMOVES IT
+  //THEN ADDS A NEW PROGRESSBAR
+  let existingProgressBar = document.querySelector(".progressbar-container")
+  if(existingProgressBar!==null){
+    existingProgressBar.remove()
+  }
+  progressBar.classList.add("progressbar-container")
+  progressRange.setAttribute("type", "range")
+  progressBar.appendChild(progressRange)
+  songContainerRef.appendChild(progressBar)
 
-  if (lastPlayedButton === '') {
-    console.log("lastPlayedButton is null")
+  //THIS SETS THE PREVIOUSLY SELECTED SONG'S ICON TO PAUSE
+  //WHEN SELECTING A NEW SONG TO PLAY
+  if (lastPlayedButton === null) {
+    // console.log("lastPlayedButton is initially null")
     lastPlayedButton = button;
-
+    // console.log(lastPlayedButton)
   } else {
-    console.log("lastPlayedButton is NOT null")
+    // console.log("lastPlayedButton is NOT null")
     if(button!==lastPlayedButton){
       lastPlayedButton.classList.remove("pause-icon")
       lastPlayedButton.classList.add("play-icon")
       lastPlayedButton = button
+      // console.log(lastPlayedButton)
     }
   }
 
-  //this toggles the images under the div from play-pause vice versa
+  //IF USER IS TOGGLING THE SAME SONG, THIS PLAYS/PAUSES THE SELECTED SONG 
+  //IF USER PLAYS A NEW SONG, THIS PLAYS THAT SONG AND PAUSES THE PREVIOUSLY PLAYED SONG 
+  if(lastPlayedAudio === null){
+    // console.log("lastPlayedAudio is initially null")
+    currentPlayingAudio.play()
+    lastPlayedAudio = currentPlayingAudio
+    // console.log(lastPlayedAudio)
+  } else{
+    // console.log("lastPlayedAudio is NOT null")
+    if(currentPlayingAudio!==lastPlayedAudio){
+      lastPlayedAudio.pause()
+      // console.log(lastPlayedAudio)
+      currentPlayingAudio.play()
+      lastPlayedAudio = currentPlayingAudio
+      // console.log(lastPlayedAudio)
+    }else{
+      currentPlayingAudio.paused ? currentPlayingAudio.play() : currentPlayingAudio.pause()
+    }
+  }
+
+  //THIS IS FOR SONG PROGRESS BAR MOVEMENT
+  progressRange.max = currentPlayingAudio.duration
+
+  if(!currentPlayingAudio.paused){
+    setInterval(() => {
+      progressRange.value = currentPlayingAudio.currentTime
+    }, 300);
+    vinyl.classList.add("vinyl-spin")
+  }
+  else{
+    progressRange.value = currentPlayingAudio.currentTime
+    vinyl.classList.remove("vinyl-spin")
+
+  }
+  
+  //THIS IS FOR SEEKING
+  progressRange.onchange = () => {
+    currentPlayingAudio.play()
+    currentPlayingAudio.currentTime = progressRange.value
+  }
+
+  //THIS TOGGLES THE SELECTED SONG'S PLAY-PAUSE ICON
   if (button.classList.contains("play-icon")) {
+    
     button.classList.remove("play-icon")
     button.classList.add("pause-icon")
-
   } else {
     button.classList.remove("pause-icon")
     button.classList.add("play-icon")
   }
 }
+
+
 
 function buildAlbums() {
   albums.forEach((album, index) => {
@@ -98,7 +175,7 @@ function buildAlbums() {
               <div class="vinyl"></div>
           </div>
       </section>
-      <section class="songs-container flex-1">
+      <section class="album-container flex-1">
           <div class="heading">
               <h2 class="font-urban-medium">${album.name}</h2>
               <p class="font-urban-italic">Released ${album.releaseDate}</p>
@@ -114,6 +191,9 @@ function buildAlbums() {
                         <p class="font-urban-italic">${song.duration}</p>
                     </div>
                     <!-- add diri tong play bar -->
+                    <audio>
+                        <source src=${song.songLink}>
+                    </audio>
                 </div>
                 `;
                 })

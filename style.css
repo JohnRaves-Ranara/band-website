@@ -144,7 +144,7 @@ img{
 }
 
 .album-wrapper{
-  padding: 8rem 8rem;
+  padding: 5rem 8rem;
   /* background-color: violet; */
 }
 
@@ -164,7 +164,7 @@ img{
   z-index: 1;
 }
 
-.songs-container{
+.album-container{
   /* background-color: blue; */
 }
 
@@ -175,17 +175,6 @@ img{
 .heading h2{
   margin-bottom: 10px;
 }
-
-.song-container > .song > div{
-  /* background-color: blue; */
-  position: relative;
-}
-
-.song-container > .song > div > svg:nth-child(2){
-  position: absolute;
-  left: 0;
-}
-
 
 .song-container .song p:nth-child(2){
   margin-left: 10px;
@@ -203,6 +192,16 @@ img{
   width: 20px;
   background-size: cover;
   background-image: url("assets/pause.svg");
+}
+
+.progressbar-container{
+  padding: 5px 0px;
+  color: white;
+}
+
+input{
+  width: 100%;
+  display: block;
 }
 
 .vinyl {
