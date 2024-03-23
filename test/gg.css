@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.root{
+    background-color: blue;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.song-container{
+    padding: 5px;
+    background-color: yellow;
+    
+}
+
+.song{
+    padding: 5px;
+    background-color: red;
+    display: flex;
+}
+
+.song-container > .song > p{
+    background-color: green;
+    flex: 1;
+}
+
+.song-container .play-button{
+    outline: none;
+    border: none;
+    padding: 5px;
+    background-color: darkred;
+    color: white;
+}
+
+.progressbar-container{
+    color: white;
+    height: 50px;
+    padding: 5px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+/* .root div:nth-child(2){
+    background-color: purple;
+} */

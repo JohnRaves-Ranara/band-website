@@ -1,0 +1,207 @@
+*{
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'urban-regular';
+  src: url('assets/fonts/urbanist/Urbanist-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'urban-bold';
+  src: url('assets/fonts/urbanist/Urbanist-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'urban-black';
+  src: url('assets/fonts/urbanist/Urbanist-Black.ttf');
+}
+
+@font-face {
+  font-family: 'urban-thin';
+  src: url();
+}
+
+@font-face {
+  font-family: 'urban-light';
+  src: url('assets/fonts/urbanist/Urbanist-Light.ttf');
+}
+
+@font-face {
+  font-family: 'urban-semibold';
+  src: url('assets/fonts/urbanist/Urbanist-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'urban-medium';
+  src: url('assets/fonts/urbanist/Urbanist-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'urban-italic';
+  src: url('assets/fonts/urbanist/Urbanist-Italic.ttf');
+}
+
+/* FLEXBOX */
+
+.flex-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row-reverse{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.flex-center{
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-start{
+  justify-content: start;
+}
+
+.flex-end{
+  justify-content: end;
+}
+
+.self-start{
+  align-self: start;
+}
+
+.self-end{
+  align-self: end;
+}
+
+.self-center{
+  align-self: center;
+}
+
+.flex-1{
+  flex: 1;
+}
+
+/* --- */
+
+/* SPACING */
+
+.p-3{
+  padding: 0.5rem;
+}
+
+.gap-3{
+  gap: 0.5rem;
+}
+
+/* --- */
+
+/* FONTS */
+
+.font-urban-reg{
+  font-family: 'urban-regular';
+}
+.font-urban-bold{
+  font-family: 'urban-bold';
+}
+.font-urban-semibold{
+  font-family: 'urban-semibold';
+}
+.font-urban-black{
+  font-family: 'urban-black';
+}
+.font-urban-medium{
+  font-family: 'urban-medium';
+}
+.font-urban-italic{
+  font-family: 'urban-italic';
+}
+.font-urban-thin{
+  font-family: 'urban-thin';
+}
+.font-urban-light{
+  font-family: 'urban-light';
+}
+
+/* --- */
+
+
+img{
+  display: block;
+}
+
+.album-wrapper{
+  padding: 8rem 8rem;
+  /* background-color: violet; */
+}
+
+.cover-container{
+  /* background-color: green; */
+  flex: 1;
+}
+
+.cover{
+  display: inline-flex;
+  /* background-color: red; */
+}
+
+.cover-container img{
+  height: 300px;
+  width: 300px;
+  background-size: cover;
+  z-index: 1;
+}
+
+.songs-container{
+  flex: 1;
+  /* background-color: blue; */
+}
+
+.song-container > .song {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .song-container > .song > p:last-child{s
+} */
+
+.vinyl {
+  position: relative;
+  margin-left: -120px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: linear-gradient(
+        30deg,
+        transparent 40%,
+        rgba(42, 41, 40, 0.85) 40%
+      )
+      no-repeat 100% 0,
+    linear-gradient(60deg, rgba(42, 41, 40, 0.85) 60%, transparent 60%)
+      no-repeat 0 100%,
+    repeating-radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
+  background-size: 50% 100%, 100% 50%, 100% 100%;
+}
+
+.vinyl:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -35px;
+  border: solid 1px #d9a388;
+  background-size: cover;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-image: url('assets/ab67616d0000b273e7a1fbcf9266e0650624328c.jpg');
+  content: "";
+}
