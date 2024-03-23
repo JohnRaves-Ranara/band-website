@@ -65,8 +65,9 @@ const albums = [
   },
 ];
 
-let lastPlayedButton = null;
+let lastPlayedButton = null
 let lastPlayedAudio = null
+let lastVinyl = null
 
 function togglePlayPause(button, name, duration) {
   let progressBar = document.createElement("div")
@@ -75,7 +76,8 @@ function togglePlayPause(button, name, duration) {
   let currentPlayingAudio = songContainerRef.querySelector("audio")
   let albumContainer = button.closest(".album-container")
   let coverContainer = albumContainer.previousElementSibling
-  let vinyl = coverContainer.querySelector(".vinyl")
+  let currentVinyl = coverContainer.querySelector(".vinyl")
+  progressBar.value = 0
   //THIS CHECKS FOR EXISTING PROGRESSBAR AND REMOVES IT
   //THEN ADDS A NEW PROGRESSBAR
   let existingProgressBar = document.querySelector(".progressbar-container")
@@ -122,25 +124,43 @@ function togglePlayPause(button, name, duration) {
       currentPlayingAudio.paused ? currentPlayingAudio.play() : currentPlayingAudio.pause()
     }
   }
+  
+  if(lastVinyl===null){
+    currentVinyl.classList.add("vinyl-spin")
+    lastVinyl = currentVinyl
+  } else {
+    if(currentVinyl!==lastVinyl){
+      lastVinyl.classList.remove("vinyl-spin")
+      currentVinyl.classList.add("vinyl-spin")
+      lastVinyl = currentVinyl
+    } else {
+      currentPlayingAudio.paused ? lastVinyl.classList.remove("vinyl-spin") : lastVinyl.classList.add("vinyl-spin")
+    }
+  }
 
   //THIS IS FOR SONG PROGRESS BAR MOVEMENT
-  progressRange.max = currentPlayingAudio.duration
+  progressRange.max = Math.round(currentPlayingAudio.duration)
 
-  if(!currentPlayingAudio.paused){
     setInterval(() => {
-      progressRange.value = currentPlayingAudio.currentTime
-    }, 300);
-    vinyl.classList.add("vinyl-spin")
-  }
-  else{
-    progressRange.value = currentPlayingAudio.currentTime
-    vinyl.classList.remove("vinyl-spin")
 
-  }
+        if(progressRange.value < currentPlayingAudio.duration){
+          progressRange.value = currentPlayingAudio.currentTime
+          console.log(`${progressRange.value} ${progressRange.max}`)
+        }
+        else{
+          button.classList.remove("pause-icon")
+          button.classList.add("play-icon")
+          // lastVinyl.classList.remove("vinyl-spin")
+        }
+        
+      
+    }, 300);
+
+
   
   //THIS IS FOR SEEKING
   progressRange.onchange = () => {
-    currentPlayingAudio.play()
+    // currentPlayingAudio.play()
     currentPlayingAudio.currentTime = progressRange.value
   }
 
