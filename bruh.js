@@ -61,35 +61,23 @@ function togglePlay(button, name, duration) {
   if (lastPlayedButton === '') {
     console.log("lastPlayedButton is null")
     lastPlayedButton = button;
-    // console.log(lastPlayedButton)
-    // console.log(duration);
-    
-    if (button.innerHTML.includes(playButton)) {
-      button.innerHTML = "";
-      button.innerHTML += pauseButton;
-    } else {
-      button.innerHTML = "";
-      button.innerHTML += playButton;
-    }
 
   } else {
     console.log("lastPlayedButton is NOT null")
-    // console.log(lastPlayedButton);
-    // console.log(duration);
-
-    if (button.innerHTML.includes(playButton)) {
-      button.innerHTML = "";
-      button.innerHTML += pauseButton;
-    } else {
-      button.innerHTML = "";
-      button.innerHTML += playButton;
-    }
-
     if(button!==lastPlayedButton){
       lastPlayedButton.innerHTML = ""
       lastPlayedButton.innerHTML += playButton
       lastPlayedButton = button
     }
+  }
+
+  //this toggles the images under the div from play-pause vice versa
+  if (button.innerHTML.includes(playButton)) {
+    button.innerHTML = "";
+    button.innerHTML += pauseButton;
+  } else {
+    button.innerHTML = "";
+    button.innerHTML += playButton;
   }
 }
 
