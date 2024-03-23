@@ -27,7 +27,7 @@ songs.forEach((song, index) => {
   rootDiv.innerHTML += 
   `<div class="song-container">
         <div class="song">
-            <button class="play-button" onclick="handlePlayButtonClick(this, '${song.duration}', ${index})">Play ${index}</button>
+            <div class="play-button" onclick="handlePlayButtonClick(this, '${song.duration}', ${index})">Play ${index}</div>
             <p>${song.name}</p>
         </div>
     </div>`

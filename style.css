@@ -134,6 +134,10 @@
 
 /* --- */
 
+.hidden{
+  visibility: hidden;
+}
+
 
 img{
   display: block;
@@ -146,7 +150,6 @@ img{
 
 .cover-container{
   /* background-color: green; */
-  flex: 1;
 }
 
 .cover{
@@ -162,17 +165,31 @@ img{
 }
 
 .songs-container{
-  flex: 1;
   /* background-color: blue; */
 }
 
-.song-container > .song {
-  display: flex;
-  justify-content: space-between;
+.heading{
+  margin-bottom: 20px;
 }
 
-/* .song-container > .song > p:last-child{s
-} */
+.heading h2{
+  margin-bottom: 10px;
+}
+
+.song-container > .song > div{
+  /* background-color: blue; */
+  position: relative;
+}
+
+.song-container > .song > div > svg:nth-child(2){
+  position: absolute;
+  left: 0;
+}
+
+
+.song-container .song p:nth-child(2){
+  margin-left: 10px;
+}
 
 .vinyl {
   position: relative;
@@ -180,6 +197,7 @@ img{
   width: 300px;
   height: 300px;
   border-radius: 50%;
+  border: 5px solid orange;
   background: linear-gradient(
         30deg,
         transparent 40%,
@@ -192,6 +210,10 @@ img{
   background-size: 50% 100%, 100% 50%, 100% 100%;
 }
 
+.vinyl-spin{
+  animation: vinyl-spin 5000ms infinite linear;
+}
+
 .vinyl:after {
   position: absolute;
   top: 50%;
@@ -202,6 +224,18 @@ img{
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  background-image: url('assets/ab67616d0000b273e7a1fbcf9266e0650624328c.jpg');
+  /* background-image: inherit; */
   content: "";
+}
+
+
+
+@keyframes vinyl-spin {
+  from{
+    transform: rotate(0deg);
+  }
+
+  to{
+    transform: rotate(360deg);
+  }
 }
