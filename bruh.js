@@ -54,10 +54,8 @@ const albums = [
 
 let lastPlayedButton = '';
 
-function togglePlay(button, name, duration) {
-  let pauseButton = `<img src="assets/pause.svg">`;
-  let playButton = `<img src="assets/play.svg">`;
-  
+function togglePlayPause(button, name, duration) {
+
   if (lastPlayedButton === '') {
     console.log("lastPlayedButton is null")
     lastPlayedButton = button;
@@ -65,19 +63,20 @@ function togglePlay(button, name, duration) {
   } else {
     console.log("lastPlayedButton is NOT null")
     if(button!==lastPlayedButton){
-      lastPlayedButton.innerHTML = ""
-      lastPlayedButton.innerHTML += playButton
+      lastPlayedButton.classList.remove("pause-icon")
+      lastPlayedButton.classList.add("play-icon")
       lastPlayedButton = button
     }
   }
 
   //this toggles the images under the div from play-pause vice versa
-  if (button.innerHTML.includes(playButton)) {
-    button.innerHTML = "";
-    button.innerHTML += pauseButton;
+  if (button.classList.contains("play-icon")) {
+    button.classList.remove("play-icon")
+    button.classList.add("pause-icon")
+
   } else {
-    button.innerHTML = "";
-    button.innerHTML += playButton;
+    button.classList.remove("pause-icon")
+    button.classList.add("play-icon")
   }
 }
 
@@ -110,9 +109,7 @@ function buildAlbums() {
                   return `
                 <div class="song-container">
                     <div class="song flex-row">
-                        <div onclick="togglePlay(this, '${song.name}', '${song.duration}')">
-                          <img src="assets/play.svg">
-                        </div>
+                        <div onclick="togglePlayPause(this, '${song.name}', '${song.duration}')" class="play-icon"></div>
                         <p class="font-urban-italic flex-1">${song.name}</p>
                         <p class="font-urban-italic">${song.duration}</p>
                     </div>

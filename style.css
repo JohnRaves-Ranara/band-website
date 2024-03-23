@@ -191,6 +191,20 @@ img{
   margin-left: 10px;
 }
 
+.play-icon{
+  height: 20px;
+  width: 20px;
+  background-size: cover;
+  background-image: url("assets/play.svg");
+}
+
+.pause-icon{
+  height: 20px;
+  width: 20px;
+  background-size: cover;
+  background-image: url("assets/pause.svg");
+}
+
 .vinyl {
   position: relative;
   margin-left: -120px;
