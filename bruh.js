@@ -120,7 +120,9 @@ function togglePlayPause(button, name, duration) {
       lastPlayedAudio = currentPlayingAudio;
       // console.log(lastPlayedAudio)
     } else {
-      currentPlayingAudio.paused ? currentPlayingAudio.play() : currentPlayingAudio.pause()
+      currentPlayingAudio.paused
+        ? currentPlayingAudio.play()
+        : currentPlayingAudio.pause();
     }
   }
 
@@ -141,7 +143,7 @@ function togglePlayPause(button, name, duration) {
 
   //THIS IS FOR SONG PROGRESS BAR MOVEMENT
   progressRange.max = Math.round(currentPlayingAudio.duration);
-  progressRange.value = currentPlayingAudio.currentTime
+  progressRange.value = currentPlayingAudio.currentTime;
 
   let playingSongProgress = setInterval(() => {
     if (progressRange.value < currentPlayingAudio.duration) {
@@ -149,11 +151,12 @@ function togglePlayPause(button, name, duration) {
       console.log(`${progressRange.value} ${progressRange.max}`);
     } else {
       setTimeout(() => {
-        clearInterval(playingSongProgress)
+        clearInterval(playingSongProgress);
       }, 0);
+      // currentPlayingAudio.currentTime = 0
       button.classList.remove("pause-icon");
       button.classList.add("play-icon");
-      lastVinyl.classList.remove("vinyl-spin")
+      lastVinyl.classList.remove("vinyl-spin");
     }
   }, 1000);
 
@@ -180,6 +183,10 @@ function buildAlbums() {
       albumWrapper.classList.add("album-wrapper", "flex-row");
     } else {
       albumWrapper.classList.add("album-wrapper", "flex-row-reverse");
+    }
+
+    if (index === albums.length - 1) {
+      albumWrapper.classList.add("pb-8");
     }
 
     albumWrapper.innerHTML += `
@@ -225,4 +232,3 @@ function buildAlbums() {
 let mainAlbumsContainer = document.querySelector(".main-albums-container");
 
 buildAlbums();
-

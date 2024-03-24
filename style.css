@@ -1,5 +1,4 @@
 *{
-
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -103,6 +102,10 @@
   gap: 0.5rem;
 }
 
+.pb-8{
+  padding-bottom: 8rem;
+}
+
 /* --- */
 
 /* FONTS */
@@ -144,11 +147,24 @@ img{
 }
 
 .album-wrapper{
-  padding: 5rem 8rem;
+  /* padding: 8rem 8rem 0 8rem; */
+  padding-top: 8rem;
+  padding-right: 8rem;
+  padding-left: 8rem;
+  flex-wrap: wrap;
   /* background-color: violet; */
 }
 
-.cover-container{
+.cover-container-row-start{
+  display: flex;
+  flex: 1;
+  /* background-color: green; */
+}
+
+.cover-container-row-end{
+  display: flex;
+  flex: 1;
+  justify-content: end;
   /* background-color: green; */
 }
 
@@ -250,4 +266,41 @@ input{
   to{
     transform: rotate(360deg);
   }
+}
+
+.hero-background{
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  background-image: url('assets/1ad53b0735b7102f919a86ac498a5fc5.jpg');
+}
+
+.hero-background > div h1{
+  margin-top: 10rem;
+  font-size: 8.5rem;
+  color: white;
+  letter-spacing: 30px;
+  word-spacing: 50px;
+}
+
+.about{
+  padding: 5rem 8rem;
+  background-color: #1c3420;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about p{
+  font-size: 1.5rem;
+  line-height: 180%;
+  text-align: center;
+}
+
+.about h1{
+  margin-bottom: 1rem;
+  font-size: 3rem;
 }
