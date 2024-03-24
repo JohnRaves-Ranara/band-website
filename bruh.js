@@ -7,27 +7,27 @@ const albums = [
       {
         name: "Between Days",
         duration: "3:10",
-        songLink: "assets/albums/BetweenDays-Album/Between-Days.mp3"
+        songLink: "assets/albums/BetweenDays-Album/Between-Days.mp3",
       },
       {
         name: "Blue",
         duration: "3:25",
-        songLink: "assets/albums/BetweenDays-Album/Blue.mp3"
+        songLink: "assets/albums/BetweenDays-Album/Blue.mp3",
       },
       {
         name: "The Place",
         duration: "4:17",
-        songLink: "assets/albums/BetweenDays-Album/The-Place.mp3"
+        songLink: "assets/albums/BetweenDays-Album/The-Place.mp3",
       },
       {
         name: "Lets Go Outside",
         duration: "4:30",
-        songLink: "assets/albums/BetweenDays-Album/Lets-Go-Outside.mp3"
+        songLink: "assets/albums/BetweenDays-Album/Lets-Go-Outside.mp3",
       },
       {
         name: "Finding My Way Home",
         duration: "4:30",
-        songLink: "assets/albums/BetweenDays-Album/Finding-My-Way-Home.mp3"
+        songLink: "assets/albums/BetweenDays-Album/Finding-My-Way-Home.mp3",
       },
     ],
   },
@@ -39,55 +39,54 @@ const albums = [
       {
         name: "Conversations",
         duration: "3:19",
-        songLink: "assets/albums/TheHeights-Album/Conversations.mp3"
+        songLink: "assets/albums/TheHeights-Album/Conversations.mp3",
       },
       {
         name: "Astoria",
         duration: "4:06",
-        songLink: "assets/albums/TheHeights-Album/Astoria.mp3"
+        songLink: "assets/albums/TheHeights-Album/Astoria.mp3",
       },
       {
         name: "A Dream of You",
         duration: "4:18",
-        songLink: "assets/albums/TheHeights-Album/A-Dream-of-You.mp3"
+        songLink: "assets/albums/TheHeights-Album/A-Dream-of-You.mp3",
       },
       {
         name: "These Times",
         duration: "3:11",
-        songLink: "assets/albums/TheHeights-Album/These-Times.mp3"
+        songLink: "assets/albums/TheHeights-Album/These-Times.mp3",
       },
       {
         name: "The Heights",
         duration: "3:14",
-        songLink: "assets/albums/TheHeights-Album/The-Heights.mp3"
+        songLink: "assets/albums/TheHeights-Album/The-Heights.mp3",
       },
     ],
   },
 ];
 
-let lastPlayedButton = null
-let lastPlayedAudio = null
-let lastVinyl = null
+let lastPlayedButton = null;
+let lastPlayedAudio = null;
+let lastVinyl = null;
 
 function togglePlayPause(button, name, duration) {
-  let progressBar = document.createElement("div")
-  let progressRange = document.createElement("input")
-  let songContainerRef = button.closest(".song-container")
-  let currentPlayingAudio = songContainerRef.querySelector("audio")
-  let albumContainer = button.closest(".album-container")
-  let coverContainer = albumContainer.previousElementSibling
-  let currentVinyl = coverContainer.querySelector(".vinyl")
-  progressBar.value = 0
+  let progressBar = document.createElement("div");
+  let progressRange = document.createElement("input");
+  let songContainerRef = button.closest(".song-container");
+  let currentPlayingAudio = songContainerRef.querySelector("audio");
+  let albumContainer = button.closest(".album-container");
+  let coverContainer = albumContainer.previousElementSibling;
+  let currentVinyl = coverContainer.querySelector(".vinyl");
   //THIS CHECKS FOR EXISTING PROGRESSBAR AND REMOVES IT
   //THEN ADDS A NEW PROGRESSBAR
-  let existingProgressBar = document.querySelector(".progressbar-container")
-  if(existingProgressBar!==null){
-    existingProgressBar.remove()
+  let existingProgressBar = document.querySelector(".progressbar-container");
+  if (existingProgressBar !== null) {
+    existingProgressBar.remove();
   }
-  progressBar.classList.add("progressbar-container")
-  progressRange.setAttribute("type", "range")
-  progressBar.appendChild(progressRange)
-  songContainerRef.appendChild(progressBar)
+  progressBar.classList.add("progressbar-container");
+  progressRange.setAttribute("type", "range");
+  progressBar.appendChild(progressRange);
+  songContainerRef.appendChild(progressBar);
 
   //THIS SETS THE PREVIOUSLY SELECTED SONG'S ICON TO PAUSE
   //WHEN SELECTING A NEW SONG TO PLAY
@@ -97,85 +96,82 @@ function togglePlayPause(button, name, duration) {
     // console.log(lastPlayedButton)
   } else {
     // console.log("lastPlayedButton is NOT null")
-    if(button!==lastPlayedButton){
-      lastPlayedButton.classList.remove("pause-icon")
-      lastPlayedButton.classList.add("play-icon")
-      lastPlayedButton = button
+    if (button !== lastPlayedButton) {
+      lastPlayedButton.classList.remove("pause-icon");
+      lastPlayedButton.classList.add("play-icon");
+      lastPlayedButton = button;
       // console.log(lastPlayedButton)
     }
   }
 
-  //IF USER IS TOGGLING THE SAME SONG, THIS PLAYS/PAUSES THE SELECTED SONG 
-  //IF USER PLAYS A NEW SONG, THIS PLAYS THAT SONG AND PAUSES THE PREVIOUSLY PLAYED SONG 
-  if(lastPlayedAudio === null){
+  //IF USER IS TOGGLING THE SAME SONG, THIS PLAYS/PAUSES THE SELECTED SONG
+  //IF USER PLAYS A NEW SONG, THIS PLAYS THAT SONG AND PAUSES THE PREVIOUSLY PLAYED SONG
+  if (lastPlayedAudio === null) {
     // console.log("lastPlayedAudio is initially null")
-    currentPlayingAudio.play()
-    lastPlayedAudio = currentPlayingAudio
+    currentPlayingAudio.play();
+    lastPlayedAudio = currentPlayingAudio;
     // console.log(lastPlayedAudio)
-  } else{
+  } else {
     // console.log("lastPlayedAudio is NOT null")
-    if(currentPlayingAudio!==lastPlayedAudio){
-      lastPlayedAudio.pause()
+    if (currentPlayingAudio !== lastPlayedAudio) {
+      lastPlayedAudio.pause();
       // console.log(lastPlayedAudio)
-      currentPlayingAudio.play()
-      lastPlayedAudio = currentPlayingAudio
+      currentPlayingAudio.play();
+      lastPlayedAudio = currentPlayingAudio;
       // console.log(lastPlayedAudio)
-    }else{
+    } else {
       currentPlayingAudio.paused ? currentPlayingAudio.play() : currentPlayingAudio.pause()
     }
   }
-  
-  if(lastVinyl===null){
-    currentVinyl.classList.add("vinyl-spin")
-    lastVinyl = currentVinyl
+
+  if (lastVinyl === null) {
+    currentVinyl.classList.add("vinyl-spin");
+    lastVinyl = currentVinyl;
   } else {
-    if(currentVinyl!==lastVinyl){
-      lastVinyl.classList.remove("vinyl-spin")
-      currentVinyl.classList.add("vinyl-spin")
-      lastVinyl = currentVinyl
+    if (currentVinyl !== lastVinyl) {
+      lastVinyl.classList.remove("vinyl-spin");
+      currentVinyl.classList.add("vinyl-spin");
+      lastVinyl = currentVinyl;
     } else {
-      currentPlayingAudio.paused ? lastVinyl.classList.remove("vinyl-spin") : lastVinyl.classList.add("vinyl-spin")
+      currentPlayingAudio.paused
+        ? lastVinyl.classList.remove("vinyl-spin")
+        : lastVinyl.classList.add("vinyl-spin");
     }
   }
 
   //THIS IS FOR SONG PROGRESS BAR MOVEMENT
-  progressRange.max = Math.round(currentPlayingAudio.duration)
+  progressRange.max = Math.round(currentPlayingAudio.duration);
+  progressRange.value = currentPlayingAudio.currentTime
 
-    setInterval(() => {
+  let playingSongProgress = setInterval(() => {
+    if (progressRange.value < currentPlayingAudio.duration) {
+      progressRange.value = currentPlayingAudio.currentTime;
+      console.log(`${progressRange.value} ${progressRange.max}`);
+    } else {
+      setTimeout(() => {
+        clearInterval(playingSongProgress)
+      }, 0);
+      button.classList.remove("pause-icon");
+      button.classList.add("play-icon");
+      lastVinyl.classList.remove("vinyl-spin")
+    }
+  }, 1000);
 
-        if(progressRange.value < currentPlayingAudio.duration){
-          progressRange.value = currentPlayingAudio.currentTime
-          console.log(`${progressRange.value} ${progressRange.max}`)
-        }
-        else{
-          button.classList.remove("pause-icon")
-          button.classList.add("play-icon")
-          // lastVinyl.classList.remove("vinyl-spin")
-        }
-        
-      
-    }, 300);
-
-
-  
   //THIS IS FOR SEEKING
   progressRange.onchange = () => {
     // currentPlayingAudio.play()
-    currentPlayingAudio.currentTime = progressRange.value
-  }
+    currentPlayingAudio.currentTime = progressRange.value;
+  };
 
   //THIS TOGGLES THE SELECTED SONG'S PLAY-PAUSE ICON
   if (button.classList.contains("play-icon")) {
-    
-    button.classList.remove("play-icon")
-    button.classList.add("pause-icon")
+    button.classList.remove("play-icon");
+    button.classList.add("pause-icon");
   } else {
-    button.classList.remove("pause-icon")
-    button.classList.add("play-icon")
+    button.classList.remove("pause-icon");
+    button.classList.add("play-icon");
   }
 }
-
-
 
 function buildAlbums() {
   albums.forEach((album, index) => {
@@ -229,3 +225,4 @@ function buildAlbums() {
 let mainAlbumsContainer = document.querySelector(".main-albums-container");
 
 buildAlbums();
+

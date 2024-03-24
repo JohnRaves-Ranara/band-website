@@ -210,7 +210,6 @@ input{
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  border: 5px solid orange;
   background: linear-gradient(
         30deg,
         transparent 40%,
