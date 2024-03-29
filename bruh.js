@@ -63,13 +63,14 @@ const albums = [
       },
     ],
   },
+  
 ];
 
 let lastPlayedButton = null;
 let lastPlayedAudio = null;
 let lastVinyl = null;
 
-function togglePlayPause(button, name, duration) {
+function togglePlayPause(button) {
   let progressBar = document.createElement("div");
   let progressRange = document.createElement("input");
   let songContainerRef = button.closest(".song-container");
@@ -126,6 +127,8 @@ function togglePlayPause(button, name, duration) {
     }
   }
 
+
+  //THIS IS FOR TOGGLING VINYL SPIN ANIMATION
   if (lastVinyl === null) {
     currentVinyl.classList.add("vinyl-spin");
     lastVinyl = currentVinyl;
@@ -148,7 +151,7 @@ function togglePlayPause(button, name, duration) {
   let playingSongProgress = setInterval(() => {
     if (progressRange.value < currentPlayingAudio.duration) {
       progressRange.value = currentPlayingAudio.currentTime;
-      console.log(`${progressRange.value} ${progressRange.max}`);
+      // console.log(`${progressRange.value} ${progressRange.max}`);
     } else {
       setTimeout(() => {
         clearInterval(playingSongProgress);
@@ -162,7 +165,6 @@ function togglePlayPause(button, name, duration) {
 
   //THIS IS FOR SEEKING
   progressRange.onchange = () => {
-    // currentPlayingAudio.play()
     currentPlayingAudio.currentTime = progressRange.value;
   };
 
@@ -194,7 +196,7 @@ function buildAlbums() {
         index % 2 !== 0 ? "flex-end" : ""
       }">
           <div class="cover">
-              <img src="${album.albumCover}">
+              <img class="album-cover" src="${album.albumCover}">
               <div class="vinyl"></div>
           </div>
       </section>
@@ -203,7 +205,7 @@ function buildAlbums() {
               <h2 class="font-urban-medium">${album.name}</h2>
               <p class="font-urban-italic">Released ${album.releaseDate}</p>
           </div>
-          <div class="songs flex-col gap-3">
+          <div class="songs flex-col">
               ${album.songs
                 .map((song) => {
                   return `
