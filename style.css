@@ -268,15 +268,18 @@ input{
 
 .hero-background{
   height: 100vh;
+  width: 100%;
   background-size: cover;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-image: url('assets/1ad53b0735b7102f919a86ac498a5fc5.jpg');
   background-position: center;
 }
 
 .hero-background > div h1{
-  margin-top: 10rem;
+  text-align: center;
+  word-break: normal;
   font-size: 8.5rem;
   color: white;
   letter-spacing: 30px;
@@ -331,4 +334,22 @@ input{
     font-size: 13px;
   }
 
+}
+
+@media all and (max-width: 500px){
+  .hero-background{
+    height: 95vh;
+  }
+}
+
+@media all and (max-width: 375px){
+  .hero-background{
+    height: 90vh;
+  }
+}
+
+@media all and (max-width: 320px){
+  .hero-background{
+    height: 85vh;
+  }
 }
