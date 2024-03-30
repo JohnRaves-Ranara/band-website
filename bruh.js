@@ -196,7 +196,9 @@ function buildAlbums() {
         index % 2 !== 0 ? "flex-end" : ""
       }">
           <img class="album-cover" src="${album.albumCover}">
+          
           <div class="vinyl"></div>
+          
       </section>
       <section class="album-container flex-1">
           <div class="heading">

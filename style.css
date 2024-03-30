@@ -165,9 +165,8 @@ img{
 } */
 
 .album-cover{
-  height: auto;
-  width: 50%;
-  background-size: cover;
+  width: 55%;
+  object-fit: cover;
   z-index: 1;
 }
 
@@ -221,9 +220,9 @@ input{
 
 .vinyl {
   position: relative;
-  margin-left: -120px;
-  width: 50%;
-  border-radius: 50%;
+  margin-left: -20%;
+  width: 55%;
+  border-radius: 100%;
   background: linear-gradient(
         30deg,
         transparent 40%,
@@ -245,11 +244,11 @@ input{
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -35px;
+  transform: translateX(-50%) translateY(-50%); 
   border: solid 1px #d9a388;
   background-size: cover;
-  width: 68px;
-  height: 68px;
+  width: 15%;
+  height: 15%;
   /* background-image: inherit; */
   border-radius: 50%;
   content: "";
