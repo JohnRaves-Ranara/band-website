@@ -192,13 +192,11 @@ function buildAlbums() {
     }
 
     albumWrapper.innerHTML += `
-      <section class="cover-container flex-1 flex-row ${
+      <section class="cover-container flex-1 inline-flex ${
         index % 2 !== 0 ? "flex-end" : ""
       }">
-          <div class="cover">
-              <img class="album-cover" src="${album.albumCover}">
-              <div class="vinyl"></div>
-          </div>
+          <img class="album-cover" src="${album.albumCover}">
+          <div class="vinyl"></div>
       </section>
       <section class="album-container flex-1">
           <div class="heading">

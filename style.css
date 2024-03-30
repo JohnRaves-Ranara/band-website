@@ -65,6 +65,10 @@ html, body{
   flex-direction: row-reverse;
 }
 
+.inline-flex{
+  display: inline-flex;
+}
+
 .flex-center{
   justify-content: center;
   align-items: center;
@@ -156,13 +160,13 @@ img{
   padding: 8%;
 }
 
-.cover{
+/* .cover-container{
   display: inline-flex;
-}
+} */
 
 .album-cover{
-  height: 300px;
-  width: 300px;
+  height: auto;
+  width: 50%;
   background-size: cover;
   z-index: 1;
 }
@@ -218,8 +222,7 @@ input{
 .vinyl {
   position: relative;
   margin-left: -120px;
-  width: 300px;
-  height: 300px;
+  width: 50%;
   border-radius: 50%;
   background: linear-gradient(
         30deg,
@@ -237,6 +240,7 @@ input{
   animation: vinyl-spin 5000ms infinite linear;
 }
 
+
 .vinyl:after {
   position: absolute;
   top: 50%;
@@ -246,8 +250,8 @@ input{
   background-size: cover;
   width: 68px;
   height: 68px;
-  border-radius: 50%;
   /* background-image: inherit; */
+  border-radius: 50%;
   content: "";
 }
 
@@ -318,31 +322,6 @@ input{
   .cover-container{
     justify-content: center;
   }
-}
-
-@media all and (max-width: 715px){
-  .album-cover{
-    height: 250px;
-    width: 250px;
-  }
-
-  .vinyl{
-    height: 250px;
-    width: 250px;
-  }
-}
-
-@media all and (max-width: 715px){
-  .album-cover{
-    height: 200px;
-    width: 200px;
-  }
-
-  .vinyl{
-    height: 200px;
-    width: 200px;
-  }
-
 }
 
 @media all and (max-width: 375px){
