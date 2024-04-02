@@ -42,11 +42,6 @@ const albums = [
         songLink: "assets/albums/thedayswehad/somethinghere.mp3",
       },
       {
-        name: "Home",
-        duration: "3:55",
-        songLink: "assets/albums/thedayswehad/home.mp3",
-      },
-      {
         name: "Ordinary",
         duration: "3:25",
         songLink: "assets/albums/thedayswehad/ordinary.mp3",
