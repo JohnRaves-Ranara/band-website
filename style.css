@@ -1,100 +1,101 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body{
+html,
+body {
   overflow-x: hidden;
 }
 
 @font-face {
-  font-family: 'urban-regular';
-  src: url('assets/fonts/urbanist/Urbanist-Regular.ttf');
+  font-family: "urban-regular";
+  src: url("assets/fonts/urbanist/Urbanist-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'urban-bold';
-  src: url('assets/fonts/urbanist/Urbanist-Bold.ttf');
+  font-family: "urban-bold";
+  src: url("assets/fonts/urbanist/Urbanist-Bold.ttf");
 }
 
 @font-face {
-  font-family: 'urban-black';
-  src: url('assets/fonts/urbanist/Urbanist-Black.ttf');
+  font-family: "urban-black";
+  src: url("assets/fonts/urbanist/Urbanist-Black.ttf");
 }
 
 @font-face {
-  font-family: 'urban-thin';
+  font-family: "urban-thin";
   src: url();
 }
 
 @font-face {
-  font-family: 'urban-light';
-  src: url('assets/fonts/urbanist/Urbanist-Light.ttf');
+  font-family: "urban-light";
+  src: url("assets/fonts/urbanist/Urbanist-Light.ttf");
 }
 
 @font-face {
-  font-family: 'urban-semibold';
-  src: url('assets/fonts/urbanist/Urbanist-SemiBold.ttf');
+  font-family: "urban-semibold";
+  src: url("assets/fonts/urbanist/Urbanist-SemiBold.ttf");
 }
 
 @font-face {
-  font-family: 'urban-medium';
-  src: url('assets/fonts/urbanist/Urbanist-Medium.ttf');
+  font-family: "urban-medium";
+  src: url("assets/fonts/urbanist/Urbanist-Medium.ttf");
 }
 
 @font-face {
-  font-family: 'urban-italic';
-  src: url('assets/fonts/urbanist/Urbanist-Italic.ttf');
+  font-family: "urban-italic";
+  src: url("assets/fonts/urbanist/Urbanist-Italic.ttf");
 }
 
 /* FLEXBOX */
 
-.flex-col{
+.flex-col {
   display: flex;
   flex-direction: column;
 }
 
-.flex-row{
+.flex-row {
   display: flex;
   flex-direction: row;
 }
 
-.flex-row-reverse{
+.flex-row-reverse {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.inline-flex{
+.inline-flex {
   display: inline-flex;
 }
 
-.flex-center{
+.flex-center {
   justify-content: center;
   align-items: center;
 }
 
-.flex-start{
+.flex-start {
   justify-content: start;
 }
 
-.flex-end{
+.flex-end {
   justify-content: end;
 }
 
-.self-start{
+.self-start {
   align-self: start;
 }
 
-.self-end{
+.self-end {
   align-self: end;
 }
 
-.self-center{
+.self-center {
   align-self: center;
 }
 
-.flex-1{
+.flex-1 {
   flex: 1;
 }
 
@@ -102,15 +103,15 @@ html, body{
 
 /* SPACING */
 
-.p-3{
+.p-3 {
   padding: 0.5rem;
 }
 
-.gap-3{
+.gap-3 {
   gap: 0.5rem;
 }
 
-.mb-8{
+.mb-8 {
   margin-bottom: 8rem;
 }
 
@@ -118,45 +119,42 @@ html, body{
 
 /* FONTS */
 
-.font-urban-reg{
-  font-family: 'urban-regular';
+.font-urban-reg {
+  font-family: "urban-regular";
 }
-.font-urban-bold{
-  font-family: 'urban-bold';
+.font-urban-bold {
+  font-family: "urban-bold";
 }
-.font-urban-semibold{
-  font-family: 'urban-semibold';
+.font-urban-semibold {
+  font-family: "urban-semibold";
 }
-.font-urban-black{
-  font-family: 'urban-black';
+.font-urban-black {
+  font-family: "urban-black";
 }
-.font-urban-medium{
-  font-family: 'urban-medium';
+.font-urban-medium {
+  font-family: "urban-medium";
 }
-.font-urban-italic{
-  font-family: 'urban-italic';
+.font-urban-italic {
+  font-family: "urban-italic";
 }
-.font-urban-thin{
-  font-family: 'urban-thin';
+.font-urban-thin {
+  font-family: "urban-thin";
 }
-.font-urban-light{
-  font-family: 'urban-light';
+.font-urban-light {
+  font-family: "urban-light";
 }
 
 /* --- */
 
-.hidden{
+.hidden {
   visibility: hidden;
 }
 
-
-img{
+img {
   display: block;
 }
 
-.album-wrapper{
-  display: flex;
-  gap: 10%;
+.album-wrapper {
   padding: 8%;
 }
 
@@ -164,56 +162,62 @@ img{
   display: inline-flex;
 } */
 
-.album-cover{
+.album-cover {
   width: 55%;
   object-fit: cover;
   z-index: 1;
 }
 
-.album-container{
+.cover-and-songs-container {
+  align-items: start;
+  gap: 10%;
+}
+
+.album-container {
+  /* width: 50%; */
   gap: 1rem;
 }
 
-.heading{
+.heading {
   margin-bottom: 20px;
 }
 
-.heading h2{
+.heading h2 {
   margin-bottom: 10px;
 }
 
-.song-container .song p:nth-child(2){
+.song-container .song p:nth-child(2) {
   margin-left: 10px;
 }
 
-.songs{
+.songs {
   gap: 0.7rem;
 }
 
-.progressbar-container{
+.progressbar-container {
   margin-top: 10px;
 }
 
-.play-icon{
+.play-icon {
   height: 20px;
   width: 20px;
   background-size: cover;
   background-image: url("assets/play.svg");
 }
 
-.pause-icon{
+.pause-icon {
   height: 20px;
   width: 20px;
   background-size: cover;
   background-image: url("assets/pause.svg");
 }
 
-.progressbar-container{
+.progressbar-container {
   padding: 5px 0px;
   color: white;
 }
 
-input{
+input {
   width: 100%;
   display: block;
 }
@@ -235,16 +239,15 @@ input{
   background-size: 50% 100%, 100% 50%, 100% 100%;
 }
 
-.vinyl-spin{
+.vinyl-spin {
   animation: vinyl-spin 5000ms infinite linear;
 }
-
 
 .vinyl:after {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%); 
+  transform: translateX(-50%) translateY(-50%);
   border: solid 1px #d9a388;
   background-size: cover;
   width: 15%;
@@ -254,37 +257,35 @@ input{
   content: "";
 }
 
-
-
 @keyframes vinyl-spin {
-  from{
+  from {
     transform: rotate(0deg);
   }
 
-  to{
+  to {
     transform: rotate(360deg);
   }
 }
 
-.hero-background{
+.hero-background {
   height: 100vh;
-  width: 100%;
   background-size: cover;
   display: flex;
   justify-content: center;
+  background-repeat: no-repeat;
   align-items: center;
-  background-image: url('assets/1ad53b0735b7102f919a86ac498a5fc5.jpg');
+  background-image: url("assets/hero-daywave.jpg");
   background-position: center;
 }
 
-.hero-background > div h1{
+.hero-background > div h1 {
   text-align: center;
   word-break: normal;
   font-size: clamp(1rem, 8vw + 1rem, 8rem);
   color: white;
 }
 
-.about{
+.about {
   padding: clamp(40px, 8vw + 1rem, 7rem) clamp(20px, 8vw + 1rem, 6rem);
   background-color: #1c3420;
   color: white;
@@ -294,60 +295,64 @@ input{
   flex-direction: column;
 }
 
-.about p{
+.about p {
   font-size: clamp(16px, 1vw + 10px, 1.5rem);
   line-height: 180%;
   text-align: center;
 }
 
-.about h1{
+.about h1 {
   margin-bottom: 1rem;
   font-size: clamp(1.5rem, 2vw + 1rem, 2.75rem);
 }
 
-@media all and (max-width: 1100px){
-  .album-wrapper{
+@media all and (max-width: 1100px) {
+  .album-wrapper {
     padding: 5%;
   }
-
 }
 
-@media all and (max-width: 950px){
-  .album-wrapper{
-    flex-direction: column;
-    gap: 3rem;
+@media all and (max-width: 950px) {
+  .album-wrapper {
     padding: 10%;
   }
 
-  .cover-container{
+  .album-container {
+    width: 100%;
+  }
+
+  .cover-and-songs-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .cover-container {
     justify-content: center;
   }
 }
 
-@media all and (max-width: 375px){
-  .album-container h2{
+@media all and (max-width: 375px) {
+  .album-container h2 {
     font-size: 21px;
   }
-  .album-container p{
+  .album-container p {
     font-size: 13px;
   }
-
-}
-
-@media all and (max-width: 500px){
-  .hero-background{
-    height: 95vh;
-  }
-}
-
-@media all and (max-width: 375px){
-  .hero-background{
+  .hero-background {
     height: 90vh;
   }
 }
 
-@media all and (max-width: 320px){
-  .hero-background{
+@media all and (max-width: 500px) {
+  .hero-background {
+    height: 95vh;
+    background-position: left -14.5rem bottom 0px;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .hero-background {
     height: 85vh;
   }
 }
